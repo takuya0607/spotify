@@ -53,7 +53,7 @@ class RegisterController extends Controller
             'username' => ['required', 'string', 'max:25'],
             'firstName' => ['required', 'string', 'max:50'],
             'lastName' => ['required', 'string', 'max:50'],
-            'email' => ['required', 'string', 'email', 'max:200', 'unique:users'],
+            'email' => ['required', 'string', 'email', 'max:200', 'unique:users', 'confirmed'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'signUpDate' => ['date_format:"Y-m-d H:i:s"'],
             'profilePic' => ['string']
@@ -70,14 +70,14 @@ class RegisterController extends Controller
     {
         $un = preg_replace("/( |　)/", "", $data['username']);
         $fn = preg_replace("/( |　)/", "", $data['firstName']);
-        $fn = preg_replace("/( |　)/", "", $data['lastName']);
-        $fn = preg_replace("/( |　)/", "", $data['email']);
+        $ln = preg_replace("/( |　)/", "", $data['lastName']);
+        $em = preg_replace("/( |　)/", "", $data['email']);
 
         return User::create([
             'username' => $un,
             'firstName' => $fn,
-            'lastName' => $data['lastName'],
-            'email' => $data['email'],
+            'lastName' => $ln,
+            'email' => $em,
             'password' => Hash::make($data['password']),
             'signUpDate' => $data['signUpDate'],
             'profilePic' => $data['profilePic']
