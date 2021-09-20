@@ -1,0 +1,60 @@
+  #app {
+    height: 100vh;
+  }
+
+  #background {
+    background-color: #000;
+    background-image: url(/images/bg.jpg);
+    background-position: center;
+    background-size: cover;
+    height: 100%;
+  }
+
+  .card-body {
+    border-right: 1px solid #999;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: normal;
+  }
+
+  .card-body label {
+    color: #a0a0a0;
+  }
+
+  input {
+    display: block;
+    background-color: transparent;
+    border: 0;
+    border-bottom: 1px solid #fff;
+    width: 100%;
+    color: #fff;
+  }
+
+  ::placeholder{
+    color: #fff;
+  }
+
+  .registerButton {
+    background-color: transparent;
+    border: 2px solid #fff;
+    color: #fff;
+    border-radius: 250px;
+    display: block;
+    font-size: 14px;
+    letter-spacing: 1px;
+    margin: auto;
+    height: 40px;
+    width: 100%;
+  }
+
+  .rightTitle h1 {
+    color: #07d159;
+    font-size: 60px;
+    font-weight: bold;
+  }
+
+  .rightList li{
+    font-size: 20px;
+    list-style: none;
+    padding: 0px 0px 0px 32px;
+    background: url(/images/icons/checkmark.png) no-repeat;
+  }
