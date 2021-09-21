@@ -58,3 +58,7 @@
     padding: 0px 0px 0px 32px;
     background: url(/images/icons/checkmark.png) no-repeat;
   }
+
+  .card {
+    background-color: transparent;
+  }
