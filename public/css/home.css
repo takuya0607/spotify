@@ -123,3 +123,265 @@
   width: 125px;
 }
 
+/* ここからサイドメニューの記述 */
+
+html {
+  font-size: 100%;
+}
+body {
+  color: #121212;
+  font-family: 'Noto Sans JP', sans-serif;
+}
+a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+img {
+  max-width: 100%;
+  vertical-align: bottom;
+}
+
+li {
+  list-style: none;
+}
+
+/* サイドメニューの横幅分だけ左にmarginをとる */
+.container {
+  margin-left: 300px;
+}
+/* コンテンツ幅を設定するための共通クラス */
+.wrapper {
+  max-width: 900px;
+  padding: 80px 20px;
+  margin: 0 auto;
+}
+.site-title {
+  width: 200px;
+  line-height: 1px;
+  margin-bottom: 30px;
+}
+.site-title a {
+  display: block;
+}
+/*
+セクションタイトル用の共通クラス
+両サイドの線は疑似要素で作成して、Flexboxで横並びに配置
+※beforeが左の線、afterが右の線
+*/
+.sec-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.75rem;
+  margin-bottom: 60px;
+  text-align: center;
+}
+.sec-title::before,
+.sec-title::after {
+  border-top: 1px solid;
+  content: "";
+  width: 28%;
+}
+
+/*-------------------------------------------
+ヘッダー
+-------------------------------------------*/
+/*
+サイドのロゴとグローバルナビゲーションは「header」タグで囲む
+※サイドに配置しているが、ロゴとグローバルナビゲーションを含んだヘッダー要素のため、
+「aside」タグではなく「header」タグを使用します。
+「aside」タグは、メインコンテンツとは直接関係ない補足的な情報をサイドバーとして配置する場合に使用します。
+例えば、Codestep内の「中級編：ブログサイト」のような使い方です。
+
+中級編：ブログサイト　デモ
+https://code-step.com/demo/html/blog/
+*/
+#header {
+  width: 300px;
+  height: 100%;
+  background-color: #000;
+  padding: 20px 50px 30px 45px;
+  position: fixed;
+  top: 0;
+  /* 画面の高さが低くてメニューが隠れてしまった場合に、縦スクロールが出るよう設定 */
+  overflow-y: auto;
+  text-align: left;
+}
+
+#header li {
+  font-size: 0.875rem;
+  padding: 8px 0;
+}
+
+.logo img {
+  width: 32px;
+}
+
+#navi ul.nav-menu {
+  border-top: 1px solid #a0a0a0;
+  border-bottom: 1px solid #a0a0a0;
+  padding-left:0;
+}
+
+#navi a:hover{
+  color: #a0a0a0;
+}
+
+#navi ul.nav-sns {
+  padding-left:0;
+}
+
+.nav-sns li{
+  border-bottom: 1px solid #a0a0a0;
+}
+
+.sideLogo {
+  width: 25px;
+}
+
+.icon {
+  float: right;
+  width: 25px;
+}
+
+.sideTitle {
+  display:none
+}
+
+/*-------------------------------------------
+SP
+-------------------------------------------*/
+@media screen and (max-width: 600px) {
+  .container {
+    margin-left: 0;
+  }
+  .wrapper {
+    padding: 60px 20px;
+  }
+  .site-title {
+    width: 180px;
+    margin-bottom: 0;
+    position: relative;
+    left: 18px;
+    top: 10px;
+  }
+  .sec-title {
+    font-size: 1.25rem;
+    margin-bottom: 30px;
+  }
+  .sec-title::before,
+  .sec-title::after {
+    width: 18%;
+  }
+
+  /*-------------------------------------------
+  ヘッダー
+  -------------------------------------------*/
+  #header {
+    width: 100%;
+    height: 72px;
+    padding: 0;
+    z-index: 10;
+    text-align: center;
+  }
+  /*
+  ハンバーガーメニュー
+  ※ハンバーガーメニューの説明は他の課題と重複するため割愛
+  */
+  #navi {
+    width: 300px;
+    background-color: #000;
+    padding: 25px;
+    position: fixed;
+    top: 0;
+    left: -300px;
+    bottom: 0;
+    opacity: 0;
+    overflow-y: auto;
+    transition: 0.5s;
+    z-index: 20;
+  }
+  .open #navi {
+    left: 0;
+    opacity: 1;
+  }
+  #navi ul.nav-menu {
+    margin-bottom: 30px;
+  }
+
+  #navi ul li {
+    padding: 10px 0;
+    text-align: left;
+  }
+  .hamburger {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    position: fixed;
+    top: 22px;
+    right: 18px;
+    transition: 0.5s;
+    z-index: 20;
+        margin-right: 10px;
+  }
+  .hamburger span {
+    width: 30px;
+    height: 2px;
+    background-color: #fff;
+    border-radius: 4px;
+    display: block;
+    position: absolute;
+    left: 0;
+    transition: 0.5s;
+  }
+  .hamburger span:nth-child(1) {
+    top: 4px;
+  }
+  .hamburger span:nth-child(2) {
+    top: 14px;
+  }
+  .hamburger span:nth-child(3) {
+    bottom: 4px;
+  }
+  .open .hamburger span {
+    background-color: #fff;
+  }
+  .open .hamburger span:nth-child(1) {
+    transform: translateY(10px) rotate(-315deg);
+  }
+  .open .hamburger span:nth-child(2) {
+    opacity: 0;
+  }
+  .open .hamburger span:nth-child(3) {
+    transform: translateY(-10px) rotate(315deg);
+  }
+  #mask {
+    display: none;
+    transition: 0.5s;
+  }
+  .open #mask {
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    cursor: pointer;
+    display: block;
+    opacity: 0.8;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+  }
+
+  .sideTitle {
+    display:block;
+    color: #fff;
+    padding:20px 0;
+  }
+
+  .sideLogo {
+    margin-top: 20px;
+  }
+}
