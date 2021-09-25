@@ -8,7 +8,7 @@
         {{ __('Create your free account') }}
       </div>
       <div class="card-body">
-        <form method="POST" action="{{ route('home') }}">
+        <form method="POST" action="{{ route('register') }}">
           @csrf
 
           <!-- username -->
