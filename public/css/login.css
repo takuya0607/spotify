@@ -1,13 +1,14 @@
-  #app {
-    height: 100vh;
+  html {
+    height: 100%;
+    margin: 0;
   }
 
-  #background {
-    background-color: #000;
+  body {
+    height: 100%;
+    margin: 0;
     background-image: url(/images/bg.jpg);
     background-position: center;
     background-size: cover;
-    height: 100%;
   }
 
   .card-body {

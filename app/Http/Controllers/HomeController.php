@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Album_song;
 
 class HomeController extends Controller
 {
@@ -21,8 +22,20 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(Album_song $album_songs)
     {
-        return view('home');
+      $albumSongs = Album_song::find(1)->song()->get();
+      // $songs = Song::get(['id']);
+      // dd($albumSongs);
+      // $albums = Album_song::get('album_id');
+      // $albums = Album::find($albums);
+      // dd($albums);
+
+        return view('home',[
+          'albumSongs' => $albumSongs,
+          // 'songs' => $songs,
+          // 'albums' => $albums
+        ]);
     }
+
 }

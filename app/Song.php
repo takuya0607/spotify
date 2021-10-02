@@ -3,14 +3,15 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Song extends Model
 {
   //
   public $timestamps = false;
 
-  public function album_songs()
+  public function albums(): BelongsToMany
   {
-    return $this->hasMany(Album_song::class);
+    return $this->belongsToMany('App\Album', 'album_songs');
   }
 }
