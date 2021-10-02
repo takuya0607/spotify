@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\softDeletes;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Playlist extends Model
 {
@@ -14,12 +15,12 @@ class Playlist extends Model
     'order'
   ];
 
-  public function user()
+  public function user(): BelongsTo
   {
-    return $this->hasOne(User::class);
+    return $this->belongsTo(User::class);
   }
 
-  public function album_song()
+  public function album_song(): BelongsTo
   {
     return $this->belongsTo(Album_song::class);
   }

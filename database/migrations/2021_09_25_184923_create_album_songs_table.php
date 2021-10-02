@@ -24,7 +24,7 @@ class CreateAlbumSongsTable extends Migration
               ->on('songs');
 
             $table->foreign('album_id')
-            ->references('id')
+              ->references('id')
               ->on('albums');
         });
     }
