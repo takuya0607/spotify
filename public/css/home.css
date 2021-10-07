@@ -12,6 +12,7 @@ body {
 #mainContainer {
   width: 80%;
   height: 90%;
+  float: right;
 }
 
 
@@ -165,6 +166,54 @@ li {
   list-style: none;
 }
 
+.trackListRow li {
+  height: 40px;
+  padding: 15px 10px;
+}
+
+.trackListRow span{
+  color: #939393;
+  font-weight: 200;
+}
+
+.trackListRow:hover{
+  background-color:  #282828;
+}
+
+.trackListRow .trackCount{
+  width: 8%;
+  float: left;
+}
+
+.trackListRow .trackCount img{
+  width: 20px;
+  margin-left: 20px;
+  visibility: hidden;
+  cursor: pointer;
+}
+
+.trackListRow:hover .trackCount img{
+  visibility: visible;
+}
+
+.trackListRow .trackInfo span{
+  display: block;
+}
+
+.trackListRow .trackOptions img{
+  width: 21px;
+  margin-right: 30px;
+  visibility: hidden;
+}
+
+.trackListRow:hover .trackOptions img{
+  visibility: visible;
+}
+
+.artistName{
+  display: block;
+}
+
 /* サイドメニューの横幅分だけ左にmarginをとる */
 .container {
   margin-left: 300px;
@@ -206,16 +255,6 @@ li {
 /*-------------------------------------------
 ヘッダー
 -------------------------------------------*/
-/*
-サイドのロゴとグローバルナビゲーションは「header」タグで囲む
-※サイドに配置しているが、ロゴとグローバルナビゲーションを含んだヘッダー要素のため、
-「aside」タグではなく「header」タグを使用します。
-「aside」タグは、メインコンテンツとは直接関係ない補足的な情報をサイドバーとして配置する場合に使用します。
-例えば、Codestep内の「中級編：ブログサイト」のような使い方です。
-
-中級編：ブログサイト　デモ
-https://code-step.com/demo/html/blog/
-*/
 #header {
   width: 300px;
   height: 100%;
@@ -268,10 +307,52 @@ https://code-step.com/demo/html/blog/
   display:none
 }
 
+.albumContainer a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.homeAlbumImage {
+  object-fit: cover;
+  width: 200px;
+  height: 150px;
+}
+
+.homeAlbumTitle {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.albumImage {
+  object-fit: cover;
+  width: 200px;
+  height: 200px;
+}
+
+.albumTitle {
+  font-weight: bold;
+}
+
+.artistName {
+  color: #939393;
+}
+
+.songCount {
+  color: #939393;
+}
+
 /*-------------------------------------------
 SP
 -------------------------------------------*/
 @media screen and (max-width: 600px) {
+
+  #mainContainer {
+    width: 92%;
+    height: 90%;
+
+  }
+
   .container {
     margin-left: 0;
   }

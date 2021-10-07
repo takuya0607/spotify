@@ -20,9 +20,7 @@
 
   <!-- Styles -->
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-  @if (Request::is('home'))
   <link href="{{ asset('css/home.css') }}" rel="stylesheet">
-  @endif
 
 </head>
 

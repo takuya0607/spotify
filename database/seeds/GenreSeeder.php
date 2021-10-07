@@ -13,7 +13,7 @@ class GenreSeeder extends Seeder
     public function run()
     {
     DB::table('genres')->insert([
-      'name' => 'ZARD',
+      'name' => 'ROCK',
     ]);
     }
 }
