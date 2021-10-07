@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Album_song;
 
 class Album_songsController extends Controller
 {
@@ -11,9 +12,12 @@ class Album_songsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function albumSong()
     {
-        //
+      // groupByで、'album_id'の重複を削除する
+      $album_songs = Album_song::with('song','album')->groupBy('album_id')->get(['album_id']);
+
+      return $album_songs;
     }
 
     /**
@@ -21,11 +25,6 @@ class Album_songsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
-    }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -43,9 +42,23 @@ class Album_songsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Album_song $album_song, $id)
     {
-        //
+      // アルバムのIDに紐づいている、リレーションの取得(アーティスト、ジャンル)
+      $albumId = $album_song->getAlbumId($id);
+      // アルバムのIDに紐づいている、ソングのカウント
+      $albumSongCount = $album_song->getAlbumSong($id)->count();
+      // アルバムのIDに紐づいている、ソングの取得
+      $albumSongIds = $album_song->getAlbumSongList($id);
+      // $albumSongList =
+
+      // dd($albumSongId);
+
+      return view('albums.show', [
+      'albumSongIds' => $albumSongIds,
+      'albumId' => $albumId,
+      'albumSongCount' => $albumSongCount
+      ]);
     }
 
     /**

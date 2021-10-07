@@ -13,7 +13,7 @@ class ArtistSeeder extends Seeder
     public function run()
     {
     DB::table('artists')->insert([
-      'name' => 'ROCK',
+      'name' => 'ZARD',
     ]);
     }
 }
